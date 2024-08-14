@@ -1,5 +1,5 @@
 "use client";
-import { login } from "@/actions/login";
+import { register } from "@/actions/register";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -10,20 +10,20 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { LoginSchema } from "@/zod/schema";
+import { RegisterSchema } from "@/zod/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-type loginfrom = z.infer<typeof LoginSchema>;
+type loginfrom = z.infer<typeof RegisterSchema>;
 
-function LoginForm() {
+function RegisterForm() {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
   const form = useForm<loginfrom>({
-    resolver: zodResolver(LoginSchema),
+    resolver: zodResolver(RegisterSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -34,7 +34,7 @@ function LoginForm() {
     setError("");
     setSuccess("");
     startTransition(async () => {
-      const data = await login(values);
+      const data = await register(values);
 
       setError(data.error);
       setSuccess(data.success);
@@ -60,6 +60,19 @@ function LoginForm() {
                         type="email"
                         placeholder="johdoe@gmail.com"
                       />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input {...field} disabled={isPending} type="text" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -97,4 +110,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default RegisterForm;

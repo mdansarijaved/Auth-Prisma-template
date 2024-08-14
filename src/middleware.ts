@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import authConfig from "@/auth.config";
-import { apiAuthPrefix, authRoutes, protectedRoutes, publicRoutes } from '@/routes'
+import { apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, protectedRoutes, publicRoutes } from '@/routes'
 const { auth } = NextAuth(authConfig)
 
 export default auth((req) => {
@@ -17,7 +17,7 @@ export default auth((req) => {
     }
     if (isAuthRoute) {
         if (isLoggedin) {
-            return Response.redirect(new URL("/Dashboard", nextUrl));
+            return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
         }
         return null;
     }
