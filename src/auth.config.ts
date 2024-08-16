@@ -8,6 +8,14 @@ import { getUserByEmail } from "./lib/auth/account/user"
 
 export default {
     providers: [
+        Google({
+            clientId: process.env.AUTH_GOOGLE_ID,
+            clientSecret: process.env.AUTH_GOOGLE_SECRET
+        }),
+        GitHub({
+            clientId: process.env.AUTH_GITHUB_ID,
+            clientSecret: process.env.AUTH_GITHUB_SECRET
+        }),
         Credentials({
             async authorize(credentials) {
                 const validatesFields = LoginSchema.safeParse(credentials);

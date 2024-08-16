@@ -15,7 +15,7 @@ export const publicRoutes = [
  */
 
 export const protectedRoutes = [
-    '/protected', '/settings'
+    '/settings'
 ]
 
 /**
@@ -25,7 +25,7 @@ export const protectedRoutes = [
  */
 
 export const authRoutes = [
-    '/auth/login', '/auth/register'
+    '/auth/login', '/auth/register', '/auth/error'
 ]
 
 

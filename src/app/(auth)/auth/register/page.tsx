@@ -12,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { RegisterSchema } from "@/zod/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { redirect } from "next/navigation";
 import React, { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -38,6 +39,7 @@ function RegisterForm() {
 
       setError(data.error);
       setSuccess(data.success);
+      redirect("/auth/login");
     });
   };
 

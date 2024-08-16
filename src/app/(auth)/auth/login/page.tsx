@@ -1,5 +1,7 @@
 "use client";
 import { login } from "@/actions/login";
+import { signinoauth } from "@/actions/siginoauth";
+import { signIn } from "@/auth";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -10,6 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { LoginSchema } from "@/zod/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState, useTransition } from "react";
@@ -19,6 +22,9 @@ import * as z from "zod";
 type loginfrom = z.infer<typeof LoginSchema>;
 
 function LoginForm() {
+  const onClick = async (provider: "google" | "github") => {
+    await signinoauth(provider);
+  };
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
@@ -92,6 +98,20 @@ function LoginForm() {
             <Button className="w-full">submit</Button>
           </form>
         </Form>
+        <div className="flex justify-center items-center gap-2 w-full py-2 ">
+          <Button
+            onClick={() => onClick("google")}
+            className="w-full bg-emerald-500 text-white text-center py-2 px-3 rounded-lg"
+          >
+            Google
+          </Button>
+          <Button
+            onClick={() => onClick("github")}
+            className="w-full bg-emerald-500 text-white text-center py-2 px-3 rounded-lg"
+          >
+            Github
+          </Button>
+        </div>
       </div>
     </div>
   );
