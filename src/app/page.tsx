@@ -1,5 +1,10 @@
+import { FeaturesSectionDemo } from "@/components/feature";
 import HomeComponent from "@/components/home";
 
 export default function Home() {
-  return <HomeComponent />;
+  return (
+    <div>
+      <HomeComponent />
+    </div>
+  );
 }

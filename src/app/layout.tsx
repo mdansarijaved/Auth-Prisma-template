@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 import { ThemeProvider } from "./theme-provider";
 import { FloatingNavDemo } from "@/components/navbar";
+import { Providers } from "./provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,8 +27,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <FloatingNavDemo />
-          {children}
+          <Toaster />
+          <Providers>
+            <FloatingNavDemo />
+            {children}
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

@@ -3,7 +3,7 @@ import React from "react";
 import { AuroraBackground } from "./ui/aurora-background";
 import { Cover } from "@/components/ui/cover";
 import { motion } from "framer-motion";
-import { ModeToggle } from "./theme-toggle";
+import { FeaturesSectionDemo } from "./feature";
 function HomeComponent() {
   return (
     <AuroraBackground>
@@ -15,7 +15,7 @@ function HomeComponent() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-4 items-center justify-center px-4"
+        className="relative flex flex-col gap-4 items-center justify-center px-4 pt-20"
       >
         <div className="text-center">
           <h1 className="text-4xl md:text-4xl lg:text-6xl font-semibold max-w-7xl mx-auto text-center mt-6 relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
@@ -23,9 +23,11 @@ function HomeComponent() {
             <Cover>Next.js</Cover>
           </h1>
           <p className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
-            start building apps using this auth prisma starter template.
+            Supercharge your project with a powerful, feature-rich
+            authentication setup
           </p>
         </div>
+        <FeaturesSectionDemo />
       </motion.div>
     </AuroraBackground>
   );

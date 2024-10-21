@@ -9,10 +9,10 @@ export default function LoginLayout({
 }) {
   return (
     <div className="h-screen w-screen  flex justify-center items-center">
-      <div className="w-1/2 h-full  flex flex-col justify-between items-start">
+      <div className="w-full h-full  lg:flex flex-col justify-between items-start hidden">
         <AuthSide />
       </div>
-      <div className="w-1/2 h-full ">{children}</div>
+      <div className="w-full h-full ">{children}</div>
     </div>
   );
 }
