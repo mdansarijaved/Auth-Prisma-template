@@ -37,11 +37,16 @@ const loginUser = async (data: LoginFormValues) => {
 
 function RegisterForm() {
   const [authError, setAuthError] = useState<string | null>(null);
-  const [hovered, setHovered] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(registerSchema),
+    defaultValues: {
+      confirmpassword: "",
+      email: "",
+      name: "",
+      password: "",
+    },
   });
 
   const loginMutation = useMutation({

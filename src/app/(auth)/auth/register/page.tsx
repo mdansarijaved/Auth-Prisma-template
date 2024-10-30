@@ -10,7 +10,7 @@ import {
 import { Icons } from "@/components/ui/icons";
 import Link from "next/link";
 import RegisterForm from "./registerform";
-import { oauthLogin } from "@/actions/login";
+import { oauthLogin, oauthLogingoogle } from "@/actions/login";
 
 function RegisterPage() {
   return (
@@ -37,9 +37,11 @@ function RegisterPage() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <Button variant="outline">
-              <Icons.google className="mr-2 h-4 w-4" /> Google
-            </Button>
+            <form action={oauthLogingoogle}>
+              <Button variant="outline" className="w-full">
+                <Icons.google className="mr-2 h-4 w-4" /> Google
+              </Button>
+            </form>
             <form action={oauthLogin}>
               <Button variant="outline" className="w-full">
                 <Icons.gitHub className="mr-2 h-4 w-4" /> GitHub

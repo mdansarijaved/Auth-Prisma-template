@@ -23,11 +23,10 @@ export const login = async (values: z.infer<typeof loginSchema>) => {
 };
 
 export const oauthLogin = async () => {
-  try {
-    await signIn("github");
-  } catch (error) {
-    console.error("error", error);
-  }
+  await signIn("github");
+};
+export const oauthLogingoogle = async () => {
+  await signIn("google");
 };
 
 export const singout = async () => {
