@@ -1,8 +1,7 @@
 "use server";
 import * as z from "zod";
 import { loginSchema } from "@/zod/schema";
-import { signIn } from "@/auth";
-import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
+import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 export const login = async (values: z.infer<typeof loginSchema>) => {
   const validatesFields = loginSchema.safeParse(values);
@@ -17,6 +16,20 @@ export const login = async (values: z.infer<typeof loginSchema>) => {
       redirectTo: "/",
     });
   } catch (error) {
-    throw error;
+    if (error instanceof AuthError) {
+      throw new Error("Invalid credential");
+    }
   }
+};
+
+export const oauthLogin = async () => {
+  try {
+    await signIn("github");
+  } catch (error) {
+    console.error("error", error);
+  }
+};
+
+export const singout = async () => {
+  await signOut();
 };
