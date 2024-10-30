@@ -43,7 +43,7 @@ export default async function LoginPage() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <form action={oauthLogingoogle}>
-              <Button variant="outline">
+              <Button variant="outline" className="w-full">
                 <Icons.google className="mr-2 h-4 w-4" /> Google
               </Button>
             </form>
